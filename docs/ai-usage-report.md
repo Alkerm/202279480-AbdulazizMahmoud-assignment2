@@ -32,15 +32,6 @@
   - CL fixtures fetcher using `fetch()` with loading/error handling
 - Helped update all documentation files
 
-**What I learned / edited:**
-- Reviewed all generated code to understand each feature
-- Chose which CL API endpoint and response fields to use (`SCHEDULED`, `FINISHED`, `stage`, `score.fullTime`)
-- Selected appropriate stage label mapping (`ROUND_OF_16` → "Round of 16" etc.)
-- Registered for the `football-data.org` API and provided the key
-- Decided on the overall order of sections in the page
-
----
-
 ### 2. football-data.org API
 **Role:** External data source (not an AI tool, but an external service)
 
@@ -48,6 +39,50 @@
 - Free-tier API to fetch UEFA Champions League fixtures
 - Endpoint used: `GET /v4/competitions/CL/matches`
 - Returns match data including teams, stage, date, and score
+
+---
+
+## Responsible use & modifications
+
+All AI-generated code in this project was treated as a starting point, not a final product. Specifically:
+
+- Every generated code block was **read and understood** before being accepted into the project
+- The AI was given clear, specific instructions for each feature rather than open-ended requests
+- Generated code was **manually reviewed** for correctness, accessibility, and alignment with the assignment requirements
+- Where the AI's output did not match the intended design or behavior, it was **edited or rejected**
+- No AI-generated text was submitted as personal reflection or academic writing without disclosure
+- The API key for `football-data.org` was obtained independently and integrated by the student
+- The student made all content and design decisions (categories, sections, color palette, widget choice)
+
+---
+
+## Learning outcomes
+
+Through building this assignment with AI assistance, the following concepts were actively learned and applied:
+
+- **`IntersectionObserver` API** — understanding how scroll-based visibility detection works in the browser and why it is more performant than scroll event listeners
+- **`fetch()` and async/await** — how to make HTTP requests in the browser, handle promises, and manage loading/error states cleanly
+- **Form validation with JavaScript** — why `novalidate` is used alongside custom JS validation, and how to give per-field feedback without browser-native alerts
+- **CSS custom properties (variables)** — how a design token system enables seamless dark/light theming across the entire site
+- **CSS `@keyframes` animations** — the difference between transitions (state changes) and keyframe animations (looping or one-shot effects)
+- **DOM data attributes (`data-*`)** — how to store metadata on HTML elements and read it in JavaScript for filtering logic
+- **REST API usage** — how to authenticate with an `X-Auth-Token` header and parse JSON responses from a public API
+
+---
+
+## Benefits & challenges
+
+### Benefits
+- **Speed** — AI significantly reduced the time needed to scaffold boilerplate code like form structure, CSS resets, and API fetch wrappers
+- **Code quality** — suggestions followed modern best practices (e.g., `IntersectionObserver` over scroll listeners, `novalidate` + JS validation)
+- **Accessibility** — AI proactively added `aria-live`, `role`, and `for`/`id` attribute pairs that may have been overlooked otherwise
+- **Documentation** — AI helped structure technical documentation clearly and consistently
+
+### Challenges
+- **Trust and verification** — AI-generated code can look correct but contain subtle bugs; every feature required manual testing
+- **Context limitations** — the AI did not always remember earlier decisions, requiring reminders about the existing file structure
+- **Over-generation** — sometimes suggestions included more complexity than needed for the assignment scope, requiring trimming
+- **CORS and API constraints** — the free tier of `football-data.org` has rate limits and some endpoints behave differently than documented; this required reading the API docs independently to select the right parameters
 
 ---
 
