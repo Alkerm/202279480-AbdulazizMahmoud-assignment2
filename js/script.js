@@ -214,24 +214,42 @@ async function loadCLFixtures() {
     return;
   }
 
+  // 8-second timeout so the spinner never hangs forever
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 8000);
+
   try {
-    // Fetch next 10 CL matches (scheduled + live + recent)
     const res = await fetch(
-      "https://api.football-data.org/v4/competitions/CL/matches?status=SCHEDULED,LIVE,IN_PLAY,PAUSED,FINISHED&limit=12",
-      { headers: { "X-Auth-Token": CL_API_KEY } }
+      "https://api.football-data.org/v4/competitions/CL/matches",
+      {
+        headers: { "X-Auth-Token": CL_API_KEY },
+        signal: controller.signal,
+      }
     );
+    clearTimeout(timeoutId);
 
     if (!res.ok) throw new Error(`API error ${res.status}`);
 
     const data = await res.json();
-    // Show upcoming first, then recently finished
-    const sorted = (data.matches || []).sort(
-      (a, b) => new Date(a.utcDate) - new Date(b.utcDate)
-    ).slice(0, 9);
+    const all = data.matches || [];
+
+    // Prefer upcoming (SCHEDULED/TIMED), fall back to recent finished
+    const upcoming = all
+      .filter((m) => m.status === "SCHEDULED" || m.status === "TIMED")
+      .sort((a, b) => new Date(a.utcDate) - new Date(b.utcDate))
+      .slice(0, 9);
+
+    const recent = all
+      .filter((m) => m.status === "FINISHED")
+      .sort((a, b) => new Date(b.utcDate) - new Date(a.utcDate))
+      .slice(0, 9);
+
+    const toShow = upcoming.length ? upcoming : recent;
 
     clLoading.hidden = true;
-    renderMatches(sorted);
+    renderMatches(toShow);
   } catch (err) {
+    clearTimeout(timeoutId);
     console.error("CL fetch error:", err);
     clLoading.hidden = true;
     clError.hidden = false;
