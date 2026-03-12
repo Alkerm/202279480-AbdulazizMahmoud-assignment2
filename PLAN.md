@@ -35,7 +35,7 @@
 - [x] `loadCLFixtures()` fetches from `football-data.org` API
 - [x] Loading spinner shown while fetching
 - [x] Friendly error message if API fails
-- [ ] **Paste your API key** into `js/script.js` line: `const CL_API_KEY = "YOUR_API_KEY_HERE";`
+- [x] **Paste your API key** into `js/script.js` line: `const CL_API_KEY = "YOUR_API_KEY_HERE";`
 
 ---
 

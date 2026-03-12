@@ -1,11 +1,5 @@
 # Abdulaziz Elkarm — Personal Portfolio (Assignment 2)
 
-**Student ID:** 202279480  
-**Course:** Web Engineering — KFUPM  
-**Live Site:** *(GitHub Pages link will be added after deployment)*
-
----
-
 ## 📌 Project Description
 
 A personal portfolio website for Abdulaziz Ayman Elkarm, a Software Engineering student at KFUPM. Built as a progression from Assignment 1, this version adds full interactivity, dynamic content, API integration, and polished animations.
@@ -64,11 +58,9 @@ No build step required — this is a plain HTML/CSS/JS project.
 
 ## 🤖 AI Tools Used
 
-AI tools were used to assist with code generation, debugging, and documentation. See the full breakdown in [`docs/ai-usage-report.md`](docs/ai-usage-report.md).
+I used Antigravity (Claude Sonnet) to assist with code generation, debugging, and documentation. See the full breakdown in [`docs/ai-usage-report.md`](docs/ai-usage-report.md).
 
 ---
 
 ## 🌐 Live Deployment
-
-Deployed via GitHub Pages:  
-*(Link to be added)*
+ https://alkerm.github.io/202279480-AbdulazizMahmoud-assignment2/
